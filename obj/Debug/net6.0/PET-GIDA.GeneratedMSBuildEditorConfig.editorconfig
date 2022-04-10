@@ -1,0 +1,116 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = PET_GIDA
+build_property.RootNamespace = PET_GIDA
+build_property.ProjectDir = t:\YAZILIM NOTE\BITIRME-PROJELERI\PET-GIDA\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = true
+build_property.MSBuildProjectDirectory = t:\YAZILIM NOTE\BITIRME-PROJELERI\PET-GIDA
+build_property._RazorSourceGeneratorDebug = 
+
+[t:/YAZILIM NOTE/BITIRME-PROJELERI/PET-GIDA/Views/Admin/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[t:/YAZILIM NOTE/BITIRME-PROJELERI/PET-GIDA/Views/Admin/KediEvleri.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cS2VkaUV2bGVyaS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[t:/YAZILIM NOTE/BITIRME-PROJELERI/PET-GIDA/Views/Admin/KediMamalari.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cS2VkaU1hbWFsYXJpLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[t:/YAZILIM NOTE/BITIRME-PROJELERI/PET-GIDA/Views/Admin/KopekMamalari.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cS29wZWtNYW1hbGFyaS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[t:/YAZILIM NOTE/BITIRME-PROJELERI/PET-GIDA/Views/Admin/KopekOyuncaklari.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cS29wZWtPeXVuY2FrbGFyaS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[t:/YAZILIM NOTE/BITIRME-PROJELERI/PET-GIDA/Views/Admin/MamaDetay.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cTWFtYURldGF5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[t:/YAZILIM NOTE/BITIRME-PROJELERI/PET-GIDA/Views/Admin/Satilanlar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cU2F0aWxhbmxhci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[t:/YAZILIM NOTE/BITIRME-PROJELERI/PET-GIDA/Views/Home/AdminLogin.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBZG1pbkxvZ2luLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[t:/YAZILIM NOTE/BITIRME-PROJELERI/PET-GIDA/Views/Home/Contact.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDb250YWN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[t:/YAZILIM NOTE/BITIRME-PROJELERI/PET-GIDA/Views/Home/Email.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxFbWFpbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[t:/YAZILIM NOTE/BITIRME-PROJELERI/PET-GIDA/Views/Home/Fnish.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxGbmlzaC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[t:/YAZILIM NOTE/BITIRME-PROJELERI/PET-GIDA/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[t:/YAZILIM NOTE/BITIRME-PROJELERI/PET-GIDA/Views/Home/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[t:/YAZILIM NOTE/BITIRME-PROJELERI/PET-GIDA/Views/Home/Sepet.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTZXBldC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[t:/YAZILIM NOTE/BITIRME-PROJELERI/PET-GIDA/Views/Home/Siparislerim.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTaXBhcmlzbGVyaW0uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[t:/YAZILIM NOTE/BITIRME-PROJELERI/PET-GIDA/Views/Home/UrunDetay.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxVcnVuRGV0YXkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[t:/YAZILIM NOTE/BITIRME-PROJELERI/PET-GIDA/Views/Home/Urunler.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxVcnVubGVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[t:/YAZILIM NOTE/BITIRME-PROJELERI/PET-GIDA/Views/Shared/Components/Admin/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcQWRtaW5cRGVmYXVsdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[t:/YAZILIM NOTE/BITIRME-PROJELERI/PET-GIDA/Views/Shared/Components/Kullanici/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcS3VsbGFuaWNpXERlZmF1bHQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[t:/YAZILIM NOTE/BITIRME-PROJELERI/PET-GIDA/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[t:/YAZILIM NOTE/BITIRME-PROJELERI/PET-GIDA/Views/Shared/_AdminLayout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9BZG1pbkxheW91dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[t:/YAZILIM NOTE/BITIRME-PROJELERI/PET-GIDA/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[t:/YAZILIM NOTE/BITIRME-PROJELERI/PET-GIDA/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[t:/YAZILIM NOTE/BITIRME-PROJELERI/PET-GIDA/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[t:/YAZILIM NOTE/BITIRME-PROJELERI/PET-GIDA/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-ueh9lohh9u

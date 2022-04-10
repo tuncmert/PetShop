@@ -1,0 +1,13 @@
+@model PET_GIDA.Models.DB.Kullanici
+<div class="container-fluid">
+    <form action='@Url.Action("Cikis", "Home")' method="post">
+        <li><a title="LOGIN" href="/Home/Login"><i class='@(Model!=null?"d-none":"") fa fa-user'></i></a></li>
+        <button style="color: red; background: transparent; border: none;" title="ÇIKIŞ" type="submit" class='@(Model==null?"d-none":"") fa fa-user'></button>
+    </form>
+</div>
+
+
+@section Styles
+{
+    <link rel="stylesheet" href="~/css/style.css" />
+}

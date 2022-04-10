@@ -1,0 +1,173 @@
+@{
+    Layout = "../Shared/_AdminLayout.cshtml";
+}
+@using PET_GIDA.Models.DB
+@model List<Urunler>
+
+<div class="card col-8 offset-md-2">
+    <div class="card-header">
+        <h3 style="text-align: center;">Kedi Mamaları</h3>
+        <button style="border-color: #88cb23; background-color: #88cb23;" type="button" class="btn btn-primary float-right" id="btnMamaEkle"><i class="fas fa-plus"></i> Yeni
+            Ürün Ekle</button>
+    </div>
+    <div class="card-body">
+        <table id="tblKediMamaListesi" style="text-align: center;" class="hover display cell-border">
+            <thead>
+                <tr>
+                    <th colspan="4">Mamalar</th>
+                </tr>
+                <tr>
+                    <th>Ad</th>
+                    <th>Stok</th>
+                    <th>Fiyat</th>
+                    <th>#</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.UrunAd</td>
+                        <td>@item.UrunStok</td>
+                        <td>@item.UrunFiyat.ToString("N2")</td>
+                        <td>
+                            <a href="/Admin/MamaDetay/@item.UrunId" class="btn btn-sm btn-info"><i
+                                class="fas fa-info-circle"></i> Detay</a>
+                            <button class="btn btn-sm btn-danger" data-urunid="@item.UrunId" onclick="btnUrunSil(this)"><i class="fas fa-trash-alt"></i> Sil</button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="modal" tabindex="-1" role="dialog" id="modalKediMamaEkle">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Mama Ekle</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <label for="txbKurumAd" class="form-label">Ürün Adı</label>
+                        <input type="text" class="form-control" id="txbAd" aria-describedby="emailHelp">
+                    </div>
+                    <div class="mb-3">
+                        <label for="txbKurumSehir" class="form-label">Ürün Fiyat</label>
+                        <input type="money" class="form-control" id="txbFiyat">
+                    </div>
+                    <div class="mb-3">
+                        <label for="txbKurumIlce" class="form-label">Ürün Kısa Açıklama</label>
+                        <input type="text" class="form-control" id="txbKisaAciklama">
+                    </div>
+                    <div class="mb-3">
+                        <label for="txbKurumTelefon" class="form-label">Ürün Uzun Açıklama</label>
+                        <input type="text" class="form-control" id="txbUzunAciklama">
+                    </div>
+                    <div class="mb-3">
+                        <label for="txbKurumTelefon" class="form-label">Ürün Adeti(Stok)</label>
+                        <input type="number" class="form-control-file" id="txbStok">
+                    </div>
+                    <div>
+                        <span>Ürün 1. Görseli</span>
+                        <input type="file" id="file1">
+                    </div>
+                    <div>
+                        <span>Ürün 2. Görseli</span>
+                        <input type="file" id="file2">
+                    </div>
+                    <div>
+                        <span>Ürün 3. Görseli</span>
+                        <input type="file" id="file3">
+                    </div>
+                    <div>
+                        <span>Ürün 4. Görseli</span>
+                        <input type="file" id="file4">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button style="border-color: #90d922; background-color: #90d922;" type="button" class="btn btn-info" id="btnMamaKaydet">Kaydet</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    const kategoriId = 1;
+</script>
+@section Scripts{
+<script>
+    $(document).ready(function () {
+        $('#tblKediMamaListesi').DataTable();
+
+        $('#btnMamaEkle').click(function () {
+            $('#modalKediMamaEkle').modal('show');
+        })
+        $('#btnMamaKaydet').click(function () {
+            var file_data1 = document.getElementById('file1').files[0];
+            var file_data2 = document.getElementById('file2').files[0];
+            var file_data3 = document.getElementById('file3').files[0];
+            var file_data4 = document.getElementById('file4').files[0];
+            var form_data = new FormData();
+            form_data.append('dosya1', file_data1);
+            form_data.append('dosya2', file_data2);
+            form_data.append('dosya3', file_data3);
+            form_data.append('dosya4', file_data4);
+            form_data.append('Ad', $('#txbAd').val());
+            form_data.append('Fiyat', $('#txbFiyat').val());
+            form_data.append('Stok', $('#txbStok').val());
+            form_data.append('KisaAciklama', $('#txbKisaAciklama').val());
+            form_data.append('UzunAciklama', $('#txbUzunAciklama').val());
+            form_data.append('KategoriId',kategoriId);
+            console.log(form_data);
+            $.ajax({
+                url: '@Url.Action("UrunEkle","Admin")',
+                cache: false,
+                contentType: false,
+                processData: false,
+                data: form_data,
+                type: 'post',
+                success: function (result) {
+                    console.log(result)
+                    if (result == 1) {
+                        swal("Tebrikler!", "Mama Başarıyla Eklendi", "success").then(function () {
+                            location.reload();
+                        });
+                    }
+                },
+                error: function (err) {
+                    console.error(err.statusText);
+                }
+            });
+        });
+    });
+    function btnUrunSil(elem) {
+        console.log("HATA");
+        var urunId = $(elem).data("urunid");
+        var obj = { };
+        obj.UrunId = urunId;
+        $.ajax({
+            url: '@Url.Action("UrunSil","Admin")',
+            type: 'post',
+            data: JSON.stringify(obj),
+            dataType: 'json',
+            contentType: 'application/json;charset=utf-8',
+            success: function (result) {
+                if (result == 1) {
+                    swal("Tebrikler!", "Ürün Başarıyla Silindi", "success").then(function () {
+                        location.href = "/Admin/KediMamalari"
+                    });
+                };
+            },
+            error: function (err) {
+                console.error(err.statusText);
+            }
+        });
+    };
+</script>
+}

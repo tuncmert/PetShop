@@ -1,0 +1,209 @@
+@{
+    Layout = "../Shared/_AdminLayout.cshtml";
+}
+@using PET_GIDA.Models.DB
+@model PET_GIDA.Models.DB.Urunler
+
+<section class="content">
+
+    <!-- Default box -->
+    <div class="card card-solid">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-12 col-sm-6">
+                    <h3 class="d-inline-block d-sm-none">@Model.UrunAd</h3>
+                    <div class="col-12">
+                        <img src='@(Model.UrunResim1==null?"/images/NoImage2.png":$"data:image/png;base64,{Convert.ToBase64String(Model.UrunResim1)}")'
+                            class="product-image" style="width: 85%;" alt="Product Image">
+                    </div>
+                    <div class="col-12 product-image-thumbs">
+                        <div class="product-image-thumb active"><img
+                                src='@(Model.UrunResim1==null?"/images/NoImage2.png":$"data:image/png;base64,{Convert.ToBase64String(Model.UrunResim1)}")'
+                                alt="Product Image"></div>
+                        <div class="product-image-thumb"><img
+                                src='@(Model.UrunResim2==null?"/images/NoImage2.png":$"data:image/png;base64,{Convert.ToBase64String(Model.UrunResim2)}")'>
+                        </div>
+                        <div class="product-image-thumb"><img
+                                src='@(Model.UrunResim3==null?"/images/NoImage2.png":$"data:image/png;base64,{Convert.ToBase64String(Model.UrunResim3)}")'>
+                        </div>
+                        <div class="product-image-thumb"><img
+                                src='@(Model.UrunResim4==null?"/images/NoImage2.png":$"data:image/png;base64,{Convert.ToBase64String(Model.UrunResim4)}")'>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6">
+                    <h3 class="my-3">@Model.UrunAd</h3>
+                    <p>@Model.UrunKisaAciklama</p>
+
+                    <hr>
+
+                    <div class="bg-gray py-2 px-3 mt-4">
+                        <h2 class="mb-0">
+                            $@Model.UrunFiyat.ToString("N2")
+                        </h2>
+                    </div>
+
+                    <div class="bg-gray py-2 px-3 mt-4">
+                        <h2 class="mb-0">
+                            Stok Kalan : @Model.UrunStok
+                        </h2>
+                    </div>
+                    <div class="bg-gray mt-4">
+                        <button style="border-color: #88cb23; background-color: #88cb23;" type="button" class="btn btn-primary float-left" id="btnUrunGuncelle">Ürünü
+                            Düzenle</button>
+                    </div>
+
+                </div>
+            </div>
+            <div class="row mt-4">
+                <nav class="w-100">
+                    <div class="nav nav-tabs" id="product-tab" role="tablist">
+                        <a class="nav-item nav-link active" id="product-desc-tab" data-toggle="tab" href="#product-desc"
+                            role="tab" aria-controls="product-desc" aria-selected="true" id="txbUrunAciklama">Ürün
+                            Açıklama</a>
+                    </div>
+                </nav>
+                <div class="tab-content p-3" id="nav-tabContent">
+                    <div class="tab-pane fade show active" id="product-desc" role="tabpanel"
+                        aria-labelledby="product-desc-tab"> @Model.UrunUzunAciklama
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- MODAL -->
+    <div class="modal" tabindex="-1" role="dialog" id="modalUrunDuzenle">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Ürünü Güncelle</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="txbUrunAd" class="form-label">Ad</label>
+                            <input type="text" class="form-control" id="txbUrunAd" value="@Model.UrunAd">
+                        </div>
+                        <div class="mb-3">
+                            <label for="txbUrunFiyat" class="form-label">Fiyat</label>
+                            <input type="text" class="form-control" id="txbUrunFiyat" value="@Model.UrunFiyat">
+                        </div>
+                        <div class="mb-3">
+                            <label for="txbUrunKisaAciklama" class="form-label">Açıklama</label>
+                            <input type="text" class="form-control" id="txbUrunKisaAciklama"
+                                value="@Model.UrunKisaAciklama">
+                        </div>
+                        <div class="mb-3">
+                            <label for="txbUrunUzunAciklama" class="form-label">Uzun Açıklama</label>
+                            <input type="text" class="form-control" id="txbUrunUzunAciklama"
+                                value="@Model.UrunUzunAciklama">
+                        </div>
+                        <div class="mb-3">
+                            <label for="txbUrunStok" class="form-label">Stok</label>
+                            <input type="text" class="form-control" id="txbUrunStok" value="@Model.UrunStok">
+                        </div>
+                        <div class="mb-3 vrapper">
+                            <label class="ceklabel" for="check">Ana sayfa</label>
+                            <input class="cekinput" type="checkbox" id="check" @(Model.AnaSayfa != null?"checked":"")>
+                        </div>
+                        <div>
+                            <span>1.Fotoğraf</span>
+                            <input type="file" id="file1">
+                        </div>
+                        <div>
+                            <span>2.Fotoğraf</span>
+                            <input type="file" id="file2">
+                        </div>
+                        <div>
+                            <span>3.Fotoğraf</span>
+                            <input type="file" id="file3">
+                        </div>
+                        <div>
+                            <span>4.Fotoğraf</span>
+                            <input type="file" id="file4">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" style="border-color: #90d922; background-color: #90d922;" class="btn btn-info"
+                        id="btnUrunKaydet">Kaydet</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- MODAL SON -->
+
+</section>
+@section Styles {
+    <link rel="stylesheet" href="~/css/Checkbox.css">
+}
+@section Scripts {
+<script>
+    $(document).ready(function () {
+        $('.product-image-thumb').on('click', function () {
+            var $image_element = $(this).find('img')
+            $('.product-image').prop('src', $image_element.attr('src'))
+            $('.product-image-thumb.active').removeClass('active')
+            $(this).addClass('active')
+        })
+    });
+
+
+
+    $(document).ready(function () {
+        $('#btnUrunGuncelle').click(function () {
+            $('#modalUrunDuzenle').modal('show');
+        });
+        $('#btnUrunKaydet').click(function () {
+            var file_data1 = document.getElementById('file1').files[0];
+            var file_data2 = document.getElementById('file2').files[0];
+            var file_data3 = document.getElementById('file3').files[0];
+            var file_data4 = document.getElementById('file4').files[0];
+            var form_data = new FormData();
+            form_data.append('dosya1', file_data1);
+            form_data.append('dosya2', file_data2);
+            form_data.append('dosya3', file_data3);
+            form_data.append('dosya4', file_data4);
+            form_data.append('Id', "@Model.UrunId");
+            form_data.append('Ad', $('#txbUrunAd').val());
+            form_data.append('Fiyat', $('#txbUrunFiyat').val());
+            form_data.append('KAciklama', $('#txbUrunKisaAciklama').val());
+            form_data.append('UAciklama', $('#txbUrunUzunAciklama').val());
+            form_data.append('Stok', $('#txbUrunStok').val());
+            form_data.append('AnaSayfa', $('#check').is(':checked'));
+
+            console.log(form_data);
+            $.ajax({
+                url: '@Url.Action("UrunDuzenle","Admin")',
+                cache: false,
+                contentType: false,
+                processData: false,
+                data: form_data,
+                type: 'post',
+                success: function (result) {
+                    if (result == 1) {
+                        swal("Tebrikler!", "Ürün Başarıyla Güncellendi", "success").then(function () {
+                            location.reload();
+                        });
+                    }
+                },
+                error: function (err) {
+                    console.error(err.statusText);
+                    if (err == 0)
+                        swal("Oops", "Girilen Verileri Kontrol Edin!", "error");
+                }
+            });
+        });
+    });
+
+
+
+</script>
+}

@@ -1,0 +1,149 @@
+@model List<PET_GIDA.Models.DB.Urunler>
+
+<body>
+
+    <!-- Hero Section Begin -->
+    <section class="hero hero-normal">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="hero__categories">
+                        <div class="hero__categories__all">
+                            <i class="fa fa-bars"></i>
+                            <span>Kategoriler</span>
+                        </div>
+                        <ul>
+                            <li><button id="UrunFilter1" style="border: none; background-color: transparent;"
+                                    data-kategori="1" onclick="btnUrunFilter(this)">Kedi Mamaları</button></li>
+                            <li><button id="UrunFilter2" style="border: none; background-color: transparent;" data-kategori="3"
+                                    onclick="btnUrunFilter(this)">Kedi Evleri</button></li>
+                            <li><button id="UrunFilter3" style="border: none; background-color: transparent;" data-kategori="2"
+                                    onclick="btnUrunFilter(this)">Köpek Mamaları</button></li>
+                            <li><button id="UrunFilter4" style="border: none; background-color: transparent;" data-kategori="4"
+                                    onclick="btnUrunFilter(this)">Köpek Oyuncakları</button></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-9">
+                    <div class="hero__search">
+                        <div class="hero__search__form">
+                            <form action="#">
+                                <div class="hero__search__categories">
+                                    Tüm Ürünler
+                                </div>
+                                <input type="text" placeholder="Neye ihtiyacınız var?">
+                                <button type="submit" class="site-btn">ARAMA YAP</button>
+                            </form>
+                        </div>
+                        <div class="hero__search__phone">
+                            <div class="hero__search__phone__icon">
+                                <i class="fa fa-phone"></i>
+                            </div>
+                            <div class="hero__search__phone__text">
+                                <h5>+90 212 909 21 89</h5>
+                                <span>7/24 Yardım Hattı</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Hero Section End -->
+
+
+    <section class="breadcrumb-section set-bg" style="filter: hue-rotate(80deg);" data-setbg="/img/breadcrumb.jpg">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="breadcrumb__text">
+                        <h2 id="kategori">INFOTECH ACADEMY</h2>
+                        <div class="breadcrumb__option">
+                            <span id="keyf">Keyifli Alışverişler Diler</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <!-- Product Section Begin -->
+    <section class="product spad">
+        <div class="container">
+            <div class="row">
+                <div class="sidebar">
+                    <div class="sidebar__item">
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12 col-md-12">
+                <div class="filter__item">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4">
+                            <div class="filter__found">
+                                @* <h6><span>16</span> Ürün Bulundu</h6> *@
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" id="productsContainer">
+                    @foreach (var item in Model)
+                    {
+
+                        <div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="product__item">
+                                <div class="product__item__pic set-bg">
+                                    <img
+                                    src='@(item.UrunResim1==null?"/images/NoImage2.png":$"data:image/png;base64,{Convert.ToBase64String(item.UrunResim1)}")'>
+                                    <ul class="product__item__pic__hover">
+                                        <li><a href="" id="product-@item.UrunId" data-productname="@item.UrunAd"data-productprice="@item.UrunFiyat"><i class="fa fa-shopping-cart"></i></a>
+                                        </li>
+                                        <li>
+                                            <a href="/Home/UrunDetay/@item.UrunId"><i class="fa fa-list-alt"></i></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="product__item__text">
+                                    <h6><a href="#">@item.UrunAd</a></h6>
+                                    <h5>$@item.UrunFiyat.ToString("N2")</h5>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+    <!-- Product Section End -->
+
+
+
+</body>
+
+</html>
+
+@section Scripts {
+<script src="~/js/Sepet.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#UrunFilter1').click(function () {
+            document.getElementById("kategori").innerHTML = "KEDİ MAMALARI";
+            document.getElementById("keyf").innerHTML = "İnfotech academy keyifli alışverişler diler";
+        });
+        $('#UrunFilter2').click(function () {
+            document.getElementById("kategori").innerHTML = "KEDİ EVLERİ";
+        });
+        $('#UrunFilter3').click(function () {
+            document.getElementById("kategori").innerHTML = "KÖPEK MAMALARI";
+        });
+        $('#UrunFilter4').click(function () {
+            document.getElementById("kategori").innerHTML = "KÖPEK OYUNCAKLARI";
+        });
+    });
+</script>
+}

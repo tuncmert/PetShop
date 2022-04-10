@@ -1,0 +1,156 @@
+@{
+    Layout = "";
+}
+<link rel="stylesheet" href="~/css/jquery-ui.min.css" type="text/css">
+<link rel="stylesheet" href="~/css/Login.css">
+<link rel="stylesheet" href="~/css/font-awesome.min.css" type="text/css">
+<link rel="stylesheet" href="~/css/elegant-icons.css" type="text/css">
+<link rel="stylesheet" href="~/css/nice-select.css" type="text/css">
+<link rel="stylesheet" href="~/css/jquery-ui.min.css" type="text/css">
+<link rel="stylesheet" href="~/css/owl.carousel.min.css" type="text/css">
+<link rel="stylesheet" href="~/css/slicknav.min.css" type="text/css">
+<body>
+    <div class="container">
+        <div class="forms-container">
+            <div class="signin-signup">
+                <form method="post" asp-action="Login" class="sign-in-form">
+                    <h2 class="title">Giriş yap</h2>
+                    <div class="input-field">
+                        <i class="fas fa-user"></i>
+                        <input type="text" name="kullaniciAdi" placeholder="Kullanıcı adı" />
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" name="sifre" placeholder="Şifre" />
+                    </div>
+                    <button type="submit" id="btnuye" class="btn solid">LOGIN</button>
+                    @ViewBag.KullaniciMessage
+                    <a href="/" class="btn solid ana-sayfa">Ana Sayfa</a>
+                    <p class="social-text">Sosyal medyadan giriş yap</p>
+                    <div class="social-media">
+                        <a href="https://www.facebook.com/" target="_blank" class="social-icon">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://twitter.com/" target="_blank" class="social-icon">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://google.com/" target="_blank" class="social-icon">
+                            <i class="fab fa-google"></i>
+                        </a>
+                        <a href="https://linkedin.com/" target="_blank" class="social-icon">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </form>
+                <form class="sign-up-form">
+                    <h2 class="title">Hesabını oluştur</h2>
+                    <div class="input-field">
+                        <i class="fas fa-user"></i>
+                        <input type="text" id="txbKullaniciAdi" placeholder="Kullanıcı adı" />
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" id="txbEmail" placeholder="Email" />
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="txbSifre" placeholder="Şifre" />
+                    </div>
+                    <button type="button" id="btnKaydol" class="btn">Kayıt Ol</button>
+                    @ViewBag.RegisterMessage
+                    <p class="social-text">Sosyal medyadan hızlı kaydol</p>
+                    <div class="social-media">
+                        <a href="https://www.facebook.com/" target="_blank" class="social-icon">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://twitter.com/" target="_blank" class="social-icon">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://google.com/" target="_blank" class="social-icon">
+                            <i class="fab fa-google"></i>
+                        </a>
+                        <a href="https://linkedin.com/" target="_blank" class="social-icon">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="panels-container">
+            <div class="panel left-panel">
+                <div class="content">
+                    <h3>Biliyor Muydunuz ?</h3>
+                    <p>
+                        Üye olursanız her ay size özel avantajlardan yararlanabilir ve hızlı Alışveriş yapabilirsiniz.
+                    </p>
+                    <button class="btn transparent" id="sign-up-btn">Kayıt Ol</button>
+                </div>
+                <img src="~/img/car.png" class="image" alt="" />
+            </div>
+            <div class="panel right-panel">
+                <div class="content">
+                    <h3>Belki sen varsın diye ?</h3>
+                    <p>
+                        İlk girişinizde 24 saat boyunca özel avantajlar sizi bekler.
+                    </p>
+                    <button class="btn transparent" id="sign-in-btn">Giriş yap</button>
+                </div>
+                <img src="~/img/reg.svg" style="filter: invert(1);" class="image" alt="" />
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+
+<script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
+<script src="~/js/Login.js"></script>
+
+
+
+<script src="~/js/jquery-3.3.1.min.js"></script>
+<script src="~/js/bootstrap.min.js"></script>
+<script src="~/js/jquery.nice-select.min.js"></script>
+<script src="~/js/jquery-ui.min.js"></script>
+<script src="~/js/jquery.slicknav.js"></script>
+<script src="~/js/mixitup.min.js"></script>
+<script src="~/js/owl.carousel.min.js"></script>
+<script src="~/js/main.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+
+
+
+
+<script>
+    $(document).ready(function () {
+        $('#btnKaydol').click(function () {
+            var kkullaniciAdi = $('#txbKullaniciAdi').val();
+            var eemail = $('#txbEmail').val();
+            var ssifre = $('#txbSifre').val();
+            var obj = { kullaniciAdi: kkullaniciAdi, email: eemail, sifre: ssifre };
+            console.log(obj);
+            $.ajax({
+                url: '@Url.Action("KaydolAjax","Home")',
+                type: 'post',
+                data: JSON.stringify(obj),
+                dataType: 'json',
+                contentType: 'application/json;charset=utf-8',
+                success: function (result) {
+                    if (result == 1) {
+                        swal("Tebrikler!", "Kayıt Başarılı!", "success").then(function () {
+                            location.reload();
+                        });
+                    }
+                },
+                error: function (err) {
+                    console.error(err.statusText);
+                }
+            });
+        });
+    });
+
+</script>

@@ -1,0 +1,52 @@
+<div class="form-group">
+ 
+    <div class="form-group">
+ 
+        <input type="email" id="txbbEmail" name="Email" placeholder="Email Adresiniz" />
+    </div>
+    <div class="form-group">
+    <input type="submit" id="btnEmail" value="Şifreyi Sıfırla" class="btn btn-success" />
+    </div>
+ 
+</div>
+
+
+
+<script>
+    $(document).ready(function () {
+        $('#btnEmail').click(function () {
+            var eemail = $('#txbbEmail').val();
+            var obj = { email: eemail};
+            console.log(obj);
+            $.ajax({
+                url: '@Url.Action("EmailAjax","Home")',
+                type: 'post',
+                data: JSON.stringify(obj),
+                dataType: 'json',
+                contentType: 'application/json;charset=utf-8',
+                success: function (result) {
+                    if (result == 1) {
+                        swal("Tebrikler!", "E-posta gönderildi!", "success").then(function () {
+                            location.reload();
+                        });
+                    }
+                },
+                error: function (err) {
+                    console.error(err.statusText);
+                }
+            });
+        });
+    });
+
+</script>
+<script src="~/js/jquery-3.3.1.min.js"></script>
+<script src="~/js/bootstrap.min.js"></script>
+<script src="~/js/jquery.nice-select.min.js"></script>
+<script src="~/js/jquery-ui.min.js"></script>
+<script src="~/js/jquery.slicknav.js"></script>
+<script src="~/js/mixitup.min.js"></script>
+<script src="~/js/owl.carousel.min.js"></script>
+<script src="~/js/main.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

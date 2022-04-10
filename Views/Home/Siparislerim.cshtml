@@ -1,0 +1,121 @@
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <label for="txbSiparisNo">Sipariş Numarası</label>
+        <input type="text" id="txbSiparisNo">
+        <button type="button" id="btnSiparisim" class="btn btn-info">Sipariş Durumum</button>
+    </div>
+</div>
+
+
+<div class="card col-8 offset-md-2">
+    <div class="card-header">
+        <h3 style="text-align: center;">Satılan Ürünler</h3>
+    </div>
+    <div class="card-body">
+        <table id="tblSiparisim" style="text-align: center;" class="hover display cell-border">
+            <thead>
+                <tr>
+                    <th>Adı</th>
+                    <th>Adeti</th>
+                    <th>Sipariş Tarihi</th>
+                    <th>Sipariş Numarası</th>
+                    <th>Sipariş Durumu</th>
+                </tr>
+            </thead>
+            <tbody>
+                    <tr>
+                        <td>sdfsdfsdf</td>
+                        <td>sdfsd</td>
+                        <td>sdfsd</td>
+                        <td>sdf4</td>
+                        <td>5sdfsdf</td>
+                    </tr>
+               
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@* <div class="modal" tabindex="-1" role="dialog" id="modalSiparis">
+    <div class="modal-dialog" role="document">
+    <div class="modal-content">
+    <div class="modal-header">
+    <h5 class="modal-title">Sipariş Durumum</h5>
+    </div>
+    <div class="modal-body">
+    <form>
+    <div class="mb-3">
+    <label for="txbSiparisDurumu" class="form-label">Sipariş Durumu</label>
+    <input disabled type="text" class="form-control" id="txbSiparisDurumu">
+    </div>
+    <div class="mb-3">
+    <label for="txbAdres" class="form-label">Adres Bilgilerim</label>
+    <input disabled type="text" class="form-control" id="txbAdres">
+    </div>
+    <div class="mb-3">
+    <label for="txbTell" class="form-label">Telefon</label>
+    <input disabled type="text" class="form-control" id="txbTell">
+    </div>
+    <div class="mb-3">
+    <label for="txbMail" class="form-label">Mail Adres</label>
+    <input disabled type="text" class="form-control" id="txbMail">
+    </div>
+    <div class="mb-3">
+    <label for="txbTarih" class="form-label">Sipariş Tarihi</label>
+    <input disabled type="text" class="form-control-file" id="txbTarih">
+    </div>
+    <div class="mb-3">
+    <label for="txbDetay" class="form-label">Sipariş Detayı</label>
+    <textarea disabled type="text" class="form-control-file" id="txbDetay"></textarea>
+    </div>
+    </form>
+    </div>
+    <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+    </div>
+    </div>
+    </div>
+    </div> *@
+
+
+@section Scripts {
+<script>
+
+    $(document).ready(function () {
+        $('#tblSiparisim').DataTable();
+        $('#btnSiparisim').click(function () {
+            console.log("mert");
+            var SiparisNumarasi = $('#txbSiparisNo').val();
+            $.ajax({
+                url: "/Home/SiparisDurumum",
+                type: "post",
+                data: JSON.stringify(SiparisNumarasi),
+                dataType: 'json',
+                contentType: "application/json;charset=utf-8",
+                success: function (result) {
+                    var element = (`    <div class="card-body">
+                        <table id="tblSiparisim" style="text-align: center;" class="hover display cell-border">
+                            <thead>
+                                <tr>
+                                    <th>Adı</th>
+                                    <th>Adeti</th>
+                                    <th>Sipariş Tarihi</th>
+                                    <th>Sipariş Durumu</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>`)
+                    $('#TabloAlani').append(element);
+                    
+                },
+                error: function (err) {
+                    console.error(err.statusText);
+                }
+
+            })
+        });
+    });
+</script>
+}

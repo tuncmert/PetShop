@@ -1,0 +1,301 @@
+﻿@model PET_GIDA.Models.DB.Kart
+
+<body>
+
+
+    <!-- Checkout Section Begin -->
+    <section class="checkout spad">
+        <div class="container">
+            <div class="checkout__form">
+                <h4></h4>
+
+                <div class="container">
+                    <div class="card-container">
+
+                        <div class="front">
+                            <div class="image">
+                                <img src="image/chip.png" alt="">
+                                <img src="image/visa.png" alt="">
+                            </div>
+                            <div class="card-number-box">0000 0000 0000 0000</div>
+                            <div class="flexbox">
+                                <div class="box">
+                                    <span>Kart sahibi</span>
+                                    <div maxlength="16" class="card-holder-name">full isim</div>
+                                </div>
+                                <div class="box">
+                                    <span></span>
+                                    <div class="expiration">
+                                        <span class="exp-month"></span>
+                                        <span class="exp-year"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="back">
+                            <div class="stripe"></div>
+                            <div class="box">
+                                <span>CVV</span>
+                                <div class="cvv-box"></div>
+                                <img src="image/visa.png" alt="">
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <form class="kartr" action="">
+                        <div class="inputBox">
+                            <span>Kart numarası</span>
+                            <input type="text" maxlength="16" class="card-number-input" required>
+                        </div>
+                        <div class="inputBox">
+                            <span>Kert sahibi</span>
+                            <input type="text" id="txbKartSahibi" maxlength="16" class="card-holder-input" required>
+                        </div>
+                        <div class="flexbox">
+                            <div class="inputBox">
+                                <span>AY</span>
+                                <select name="" id="ay" class="month-input" required>
+                                    <option value="month" selected disabled>AY</option>
+                                    <option value="01">01</option>
+                                    <option value="02">02</option>
+                                    <option value="03">03</option>
+                                    <option value="04">04</option>
+                                    <option value="05">05</option>
+                                    <option value="06">06</option>
+                                    <option value="07">07</option>
+                                    <option value="08">08</option>
+                                    <option value="09">09</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                </select>
+                            </div>
+                            <div class="inputBox">
+                                <span>YIL</span>
+                                <select name="asa" id="yil" class="year-input">
+                                    <option value="year" selected disabled>YIL</option>
+                                    <option value="2022">2022</option>
+                                    <option value="2023">2023</option>
+                                    <option value="2024">2024</option>
+                                    <option value="2025">2025</option>
+                                    <option value="2026">2026</option>
+                                    <option value="2027">2027</option>
+                                    <option value="2028">2028</option>
+                                    <option value="2029">2029</option>
+                                    <option value="2030">2030</option>
+                                </select>
+                            </div>
+                            <div class="inputBox">
+                                <span>cvv</span>
+                                <input type="text" maxlength="4" class="cvv-input" required>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-lg-8 col-md-6">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="checkout__input">
+                                            <p>Ad<span>*</span></p>
+                                            <input type="text" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="checkout__input">
+                                            <p>Soyad<span>*</span></p>
+                                            <input type="text" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="checkout__input">
+                                    <p>Adres<span>*</span></p>
+                                    <input type="text" placeholder="Açık adres" class="checkout__input__add">
+                                </div>
+                                <div class="checkout__input">
+                                    <p>Sokak/Mahalle<span>*</span></p>
+                                    <input type="text" required>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="checkout__input">
+                                            <p>Telefon<span>*</span></p>
+                                            <input type="tell" name="Tell" id="txbTell" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="checkout__input">
+                                            <p>Email<span>*</span></p>
+                                            <input type="text" name="Mail" id="txbMail" required>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6">
+                                <div class="checkout__order">
+                                    <h4>Sipariş özeti</h4>
+                                    <div style="color: #444;" class="checkout__order__products"></div>
+                                    <div style="color: green; padding-bottom: 15px;" class="checkout__order__products">
+                                        Bugün kargoda <span class="fa fa-truck"></span></div>
+
+                                    <div class="checkout__order__total">Total <span>$</span><span
+                                            id="shopingCartItemTotalPrice">0</span></div>
+                                    @ViewBag.KartMessage
+                                    
+                                    <button type="button" class="site-btn" id="btnFinish">onayla</button>
+                                    <label for="" id="txbLabel"></label>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+    </section>
+    </div>
+</body>
+
+
+@section Styles{
+<link rel="stylesheet" href="~/css/Odeme.css">
+}
+@section Scripts {
+<script src="~/js/Sepet.js"></script>
+
+
+<script>
+    $(document).ready(function () {
+
+
+
+        var cartItems = JSON.parse(localStorage.getItem("cartItems"));
+        var toplamUrunFiyati = UrunFiyatiHesapla(cartItems);
+        $('#shopingCartItemTotalPrice').html(toplamUrunFiyati);
+        $('#btnFinish').click(function () {
+            var mail = $("#txbMail").val();
+            var tell = $("#txbTell").val();
+            var obj = new Array();
+            cartItems.map(p => {
+                obj.push({ UrunId: p.productId, UrunAdet: p.quantity, Mail: mail, Tell: tell});
+            })
+            console.log(obj);
+            $.ajax({
+                url: '@Url.Action("Siparis","Home")',
+                type: 'post',
+                data: JSON.stringify(obj),
+                dataType: 'json',
+                contentType: 'application/json;charset=utf-8',
+                success: function (result) {
+                    if (result == 2 || result == 0)
+                    {
+                        $('#txbLabel').val("Gerekli alanları doldurunuz.");
+                    }
+                    else {
+                        swal("Tebrikler!", "Siparişiniz Alındı, Siparişinizin Durumunu Sipariş Numaranız ile Takip Edebilirsiniz Sipariş Numaranız:"+result, "success").then(function () {
+                            localStorage.clear();
+                            location.href = "/"
+                        });
+                    }
+                },
+                error: function (err) {
+                    console.error(err.statusText);
+                }
+            });
+        });
+    });
+
+
+
+
+
+
+
+
+
+
+    document.querySelector('.card-number-input').oninput = () => {
+        document.querySelector('.card-number-box').innerText = document.querySelector('.card-number-input').value;
+    }
+
+    document.querySelector('.card-holder-input').oninput = () => {
+        document.querySelector('.card-holder-name').innerText = document.querySelector('.card-holder-input').value;
+    }
+
+    document.querySelector('.month-input').oninput = () => {
+        document.querySelector('.exp-month').innerText = document.querySelector('.month-input').value;
+    }
+
+    document.querySelector('.year-input').oninput = () => {
+        document.querySelector('.exp-year').innerText = document.querySelector('.year-input').value;
+    }
+
+    document.querySelector('.cvv-input').onmouseenter = () => {
+        document.querySelector('.front').style.transform = 'perspective(1000px) rotateY(-180deg)';
+        document.querySelector('.back').style.transform = 'perspective(1000px) rotateY(0deg)';
+    }
+
+    document.querySelector('.cvv-input').onmouseleave = () => {
+        document.querySelector('.front').style.transform = 'perspective(1000px) rotateY(0deg)';
+        document.querySelector('.back').style.transform = 'perspective(1000px) rotateY(180deg)';
+    }
+
+    document.querySelector('.cvv-input').oninput = () => {
+        document.querySelector('.cvv-box').innerText = document.querySelector('.cvv-input').value;
+    }
+
+
+
+
+
+
+
+
+
+    @* $(document).ready(function () {
+        $('#btnFinish').click(function () {
+                    $('#btnFinish').click(function () {
+            var eemail = $('#txbbEmail').val();
+            var obj = { email: eemail};
+            $.ajax({
+                url: '@Url.Action("EmailAjax","Home")',
+                type: 'post',
+                data: JSON.stringify(obj),
+                dataType: 'json',
+                contentType: 'application/json;charset=utf-8',
+                success: function (result) {
+                    if (result == 1) {
+                        swal("Tebrikler!", "E-posta gönderildi!", "success").then(function () {
+                            location.reload();
+                        });
+                    }
+                },
+                error: function (err) {
+                    console.error(err.statusText);
+                }
+            });
+        });
+            var eemail = $('#txbbEmail').val();
+            var obj = { email: eemail};
+            console.log(obj);
+            $.ajax({
+                url: '@Url.Action("EmailAjax","Home")',
+                type: 'post',
+                data: JSON.stringify(obj),
+                dataType: 'json',
+                contentType: 'application/json;charset=utf-8',
+                success: function (result) {
+                    if (result == 1) {
+                        swal("Tebrikler!", "E-posta gönderildi!", "success").then(function () {
+                            location.reload();
+                        });
+                    }
+                },
+                error: function (err) {
+                    console.error(err.statusText);
+                }
+            });
+        });
+    }); *@
+</script>
+}

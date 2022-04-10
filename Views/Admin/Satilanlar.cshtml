@@ -1,0 +1,84 @@
+@{
+    Layout = "../Shared/_AdminLayout.cshtml";
+}
+
+@using PET_GIDA.Models.DB
+@model List<SiparisListesi>
+
+<div class="card col-8 offset-md-2">
+    <div class="card-header">
+        <h3 style="text-align: center;">Satılan Ürünler</h3>
+    </div>
+    <div class="card-body">
+        <table id="tblSatilanlar" style="text-align: center;" class="hover display cell-border">
+            <thead>
+                <tr>
+                    <th>Adı</th>
+                    <th>Adeti</th>
+                    <th>Sipariş Tarihi</th>
+                    <th>Sipariş Numarası</th>
+                    <th>Kullanıcı Bilgileri</th>
+                    <th>Sipariş Durumu</th>
+                    <th>İşlem</th>
+                    <th>#</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Urun.UrunAd</td>
+                        <td>@item.UrunAdet</td>
+                        <td>@item.SiparisTarihi</td>
+                        <td>@item.SiparisNo</td>
+                        <td>@item.Tell / @item.Mail</td>
+                        <td>@item.SiparisDurumu</td>
+                        <td class="select">
+                            <select class="siparisDurumu">
+                                    <option value="@item.SiparisDurumu" selected >@item.SiparisDurumu</option>
+                                    <option value="Ödeme Alındı">Ödeme Alındı</option>
+                                    <option value="Kargoya Verildi">Kargoya Verildi</option>
+                                    <option value="Teslim Edildi">Teslim Edildi</option>
+                            </select>
+                        </td>
+                        <td><Button type="button" data-siparisid="@item.Id" onclick="btnKaydet(this)" class="btn btn-primary">KAYDET</Button></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+@section Scripts{
+<script>
+    $(document).ready(function () {
+        $('#tblSatilanlar').DataTable();
+        
+    });
+    function btnKaydet (e) {
+        var Id = $(e).data("siparisid");
+        var siparisDurumu = $(e).parent().siblings('.select').find('.siparisDurumu').val();
+        console.log(siparisDurumu);
+        obj = {UrunIdd: Id, SiparisD: siparisDurumu};
+        
+        $.ajax ({
+            url: "/Admin/SiparisDurumu",
+            type: "post",
+            data: JSON.stringify(obj),
+            dataType: 'json',
+            contentType: "application/json;charset=utf-8",
+            success: function (result) {
+                if (result == 1) {
+                    swal("Tebrikler!", "Ürün Başarıyla Güncellendi", "success").then(function () {
+                        location.href = "/Admin/Satilanlar"
+                    });
+                };
+            },
+            error: function (err) {
+                console.error(err.statusText);
+            }
+
+        })
+
+    }
+</script>
+}

@@ -1,0 +1,111 @@
+﻿@model List<PET_GIDA.Models.DB.Urunler>
+
+<body class="arkaplan">
+
+    @* <section class="breadcrumb-section set-bg" style="filter: hue-rotate(80deg);" data-setbg="img/breadcrumb.jpg">
+        <div class="container">
+        <div class="row">
+        <div class="col-lg-12 text-center">
+        <div class="breadcrumb__text">
+        <h2>INFOTECH ACAMEDY</h2>
+        <div class="breadcrumb__option">
+        <span>Keyifli Alışverişler Diler</span>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        </section> *@
+
+    <a href="/Home/Urunler" class="buton">
+        <span></span>
+        <span></span>
+        MARKET
+    </a>
+    <a style="top: 300px; left: 395px;" target="_blank" href="https://disk.yandex.com.tr/i/VGRvJkOrn4jL5Q" class="buton">
+        <span></span>
+        <span></span>
+        TANITIM
+    </a>
+    <a style="top: 400px; left: 410px;" href="/Home/Login" class="buton">
+        <span></span>
+        <span></span>
+        LOGIN
+    </a>
+    <a style="top: 500px; left: 390px;" href="/Home/Contact" class="buton">
+        <span></span>
+        <span></span>
+        ILETİŞİM
+    </a>
+
+    <!-- Categories Section Begin -->
+    <section class="categories" style="padding: 17px;">
+        <div class="container">
+            <div class="row">
+                <div style="position: fixed; margin-top: 146px; margin-left: 640px;"
+                    class="categories__slider owl-carousel">
+                    @foreach (var item in Model)
+                    {
+                        <div class="col-lg-3">
+                            <div class="categories__item set-bg"
+                            data-setbg='@(item.UrunResim1==null?"/images/NoImage2.png":$"data:image/png;base64,{Convert.ToBase64String(item.UrunResim1)}")'>
+                                <h5><a style="width:350px; height: 350px;  background-color: transparent; border-radius: 20px;"
+                                    href="/Home/UrunDetay/@item.UrunId"> </a></h5>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Categories Section End -->
+
+    <!-- Featured Section Begin -->
+    @* <section class="featured spad">
+        <div class="container">
+        <div class="row">
+        <div class="col-lg-12">
+        <div class="section-title">
+        <h2>Popüler</h2>
+        </div>
+        </div>
+        </div>
+        <div class="row featured__filter">
+        @foreach (var item in Model)
+        {
+        <div class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat">
+        <div class="featured__item">
+        <div class="featured__item__pic set-bg"
+        data-setbg='@(item.UrunResim1==null?"/images/NoImage2.png":$"data:image/png;base64,{Convert.ToBase64String(item.UrunResim1)}")'>
+        <ul class="featured__item__pic__hover" src>
+        <li><a href="" id="product-@item.UrunId" data-productname="@item.UrunAd" data-productprice="@item.UrunFiyat"><i
+        class="fa fa-shopping-cart"></i></a></li>
+        <li>
+        <a href="/Home/UrunDetay/@item.UrunId"><i
+        class="fa fa-list-alt"></i></a>
+        </li>
+        </ul>
+        </div>
+        <div class="featured__item__text">
+        <h6><a href="#">@item.UrunAd</a></h6>
+        <h5 class="asd">$@item.UrunFiyat.ToString("N2")</h5>
+        </div>
+        </div>
+        </div>
+        }
+
+
+        </div>
+        </div>
+        </section> *@
+    <!-- Featured Section End -->
+
+</body>
+
+@section Styles {
+<link rel="stylesheet" href="~/css/AnaSayfa.css">
+}
+@section Scripts {
+
+<script src="~/js/Sepet.js"></script>
+}

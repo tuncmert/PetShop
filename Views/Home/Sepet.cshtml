@@ -1,0 +1,99 @@
+@model List<PET_GIDA.Models.DB.Urunler>
+
+<body>
+
+    <!-- Shoping Cart Section Begin -->
+    <section class="shoping-cart spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="shoping__cart__table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th class="shoping__product">Ürünler</th>
+                                    <th>Fiyat</th>
+                                    <th>Adet</th>
+                                    <th>Toplam</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody id="urunListesi">
+                                @* <tr>
+                                    <td>
+                                        <h5 id="sepetUrunAdi">ÜRÜNÜN ADI</h5>
+                                    </td>
+                                    <td class="shoping__cart__price">
+                                        $55.00
+                                    </td>
+                                    <td class="shoping__cart__quantity">
+                                        <div class="quantity">
+                                            <div class="pro-qty">
+                                                <input type="text" value="1">
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="shoping__cart__total">
+                                        $110.00
+                                    </td>
+                                    <td class="shoping__cart__item__close">
+                                        <span class="icon_close"></span>
+                                    </td>
+                                </tr> *@
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="shoping__cart__btns">
+                        <a href="/Home/Urunler" class="primary-btn cart-btn">ALIŞVERİŞE DEVAM ET</a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="shoping__checkout">
+                        <h5>Fiyat listesi</h5>
+                        <ul>
+                            <li>Toplam <span>$</span><span id="shopingCartItemTotalPrice"> 0</span></li>
+                        </ul>
+                        <a href="/Home/Fnish" class="primary-btn">ÖDEME YAP</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Shoping Cart Section End -->
+
+
+</body>
+
+</html>
+@section Scripts {
+<script src="~/js/Sepet.js"></script>
+<script>
+    $(document).ready(function () {
+        var cartItems = JSON.parse(localStorage.getItem("cartItems"));
+        if (cartItems.length != 0) {
+            $('#urunListesi tr').each(function () {
+                $(this).remove();
+            });
+            cartItems.map(p => {
+                $('#urunListesi').append(`<tr><td><h5>${p.productName}</h5></td><td class="shoping__cart__price">$${p.productPrice}</td><td class="shoping__cart__quantity"><div class="quantity"><div class="pro-qty"><input type="text" value="${p.quantity}" readonly></div></div></td><td class="shoping__cart__total">$${p.productPrice*p.quantity}</td><td class="shoping__cart__item__close"><button class=" btn icon_close" data-urun="${p.productId}"onclick="btnUrunTemizle(this)"></button></td></tr>`)
+            })
+        }
+        var toplamUrunFiyati = UrunFiyatiHesapla(cartItems);
+        $('#shopingCartItemTotalPrice').html(toplamUrunFiyati);
+
+    })
+    function btnUrunTemizle(e){
+        var cartItems = JSON.parse(localStorage.getItem("cartItems"));
+        var id = $(e).data('urun');
+        
+        var varolanUrunler = cartItems.filter(p => p.productId != id);
+
+        localStorage.setItem("cartItems", JSON.stringify(varolanUrunler));
+        location.href = "/Home/Sepet"
+    }
+</script>
+}

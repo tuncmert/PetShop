@@ -1,0 +1,83 @@
+@model PET_GIDA.Models.DB.Urunler
+<body>
+
+    <!-- Product Details Section Begin -->
+    <section class="product-details spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6">
+                    <div class="product__details__pic">
+                        <div class="product__details__pic__item">
+                            <img class="product__details__pic__item--large"
+                                src='@(Model.UrunResim1==null?"/images/NoImage2.png":$"data:image/png;base64,{Convert.ToBase64String(Model.UrunResim1)}")' alt="">
+                        </div>
+                        <div class="product__details__pic__slider owl-carousel">
+                            <img data-imgbigurl='@(Model.UrunResim2==null?"/images/NoImage2.png":$"data:image/png;base64,{Convert.ToBase64String(Model.UrunResim2)}")'
+                                src='@(Model.UrunResim2==null?"/images/NoImage2.png":$"data:image/png;base64,{Convert.ToBase64String(Model.UrunResim2)}")' alt="">
+                            <img data-imgbigurl='@(Model.UrunResim3==null?"/images/NoImage2.png":$"data:image/png;base64,{Convert.ToBase64String(Model.UrunResim3)}")'
+                                src='@(Model.UrunResim3==null?"/images/NoImage2.png":$"data:image/png;base64,{Convert.ToBase64String(Model.UrunResim3)}")' alt="">
+                            <img data-imgbigurl='@(Model.UrunResim4==null?"/images/NoImage2.png":$"data:image/png;base64,{Convert.ToBase64String(Model.UrunResim4)}")'
+                                src='@(Model.UrunResim4==null?"/images/NoImage2.png":$"data:image/png;base64,{Convert.ToBase64String(Model.UrunResim4)}")' alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="product__details__text">
+                        <h3>@Model.UrunAd</h3>
+                        <div class="product__details__price">$@Model.UrunFiyat.ToString("N2")</div>
+                        <p>@Model.UrunKisaAciklama</p>
+                        <div class="product__details__quantity">
+                            <div class="quantity">
+                                <div class="pro-qty">
+                                    <input type="text" value="1">
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#" class="primary-btn" id="product-@Model.UrunId" data-productname="@Model.UrunAd" data-productprice="@Model.UrunFiyat">SEPETE EKLE</a>
+                        <ul>
+                            <li><b>Stok:</b> <span>@Model.UrunStok</span></li>
+                            <li><b>Kargo</b> <span>24 Saatte kapında. <samp>Kargo Bedava!</samp></span></li>
+                            <li><b>Paylaş</b>
+                                <div class="share">
+                                    <a href="#"><i class="fa fa-facebook"></i></a>
+                                    <a href="#"><i class="fa fa-twitter"></i></a>
+                                    <a href="#"><i class="fa fa-instagram"></i></a>
+                                    <a href="#"><i class="fa fa-pinterest"></i></a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="product__details__tab">
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab"
+                                    aria-selected="true">Açıklama</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="tabs-1" role="tabpanel">
+                                <div class="product__details__tab__desc">
+                                    <h6>Ürün Hakkında</h6>
+                                    <p>@Model.UrunUzunAciklama</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Product Details Section End -->
+
+
+
+</body>
+
+</html>
+
+@section Scripts {
+
+ <script src="~/js/Sepet.js"></script>
+}
